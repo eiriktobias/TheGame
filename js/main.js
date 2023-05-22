@@ -1,8 +1,8 @@
 class Player {
   constructor() {
-    this.width = 10;
-    this.height = 10;
-    this.positionX = 25;
+    this.width = 99;
+    this.height = 100;
+    this.positionX = 35;
     this.positionY = 10;
 
     this.domElement = null;
@@ -12,8 +12,8 @@ class Player {
   createDomElement() {
     this.domElement = document.createElement("div");
     this.domElement.id = "player";
-    this.domElement.style.width = this.width + "vw";
-    this.domElement.style.height = this.height + "vh";
+    this.domElement.style.width = this.width + "px";
+    this.domElement.style.height = this.height + "px";
     this.domElement.style.left = this.positionX + "vw";
     this.domElement.style.bottom = this.positionY + "vh";
 
@@ -44,8 +44,8 @@ const player = new Player();
 
 class Enemy {
   constructor() {
-    this.width = 10;
-    this.height = 10;
+    this.width = 100;
+    this.height = 100;
     this.positionX = 45;
     this.positionY = 100;
     this.domElement = null;
@@ -54,8 +54,8 @@ class Enemy {
   createDomElement() {
     this.domElement = document.createElement("div");
     this.domElement.className = "enemy";
-    this.domElement.style.width = this.width + "vw";
-    this.domElement.style.height = this.height + "vh";
+    this.domElement.style.width = this.width + "px";
+    this.domElement.style.height = this.height + "px";
     this.domElement.style.left = this.positionX + "vw";
     this.domElement.style.bottom = this.positionY + "vh";
 

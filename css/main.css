@@ -4,18 +4,19 @@ body {
 }
 
 #board {
-  background-color: #a7c4f6;
+  background-color: #c3d5f5;
   height: 100vh;
   position: relative;
   overflow: hidden;
 }
 
 #player {
-  background-color: #696464;
+  background-image: url("../images/player.png");
+
   position: absolute;
 }
 
 .enemy {
-  background-color: #191e3b;
+  background-image: url("../images/enemy.png");
   position: absolute;
 }
