@@ -2,4 +2,16 @@ body {
   margin: 0;
   padding: 0;
 }
-dfhgh
+
+#board {
+    background-color: #a7c4f6;
+    height: 80vh;
+}
+
+#player {
+    background-color: #696464;
+}
+
+.enemy {
+    background-color: #191e3b;
+}
