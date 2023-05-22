@@ -9,7 +9,29 @@ class Player {
 
 const player = new Player();
 
+createDomElement() {
+    this.domElement = document.createElement("div");
+    this.domElement = "player";
+}
+//Players movement
+moveLeft() {
+    this.positionX = this.positionX - 2;
+    this.domElement.style.left = this.positionX + "vw";
+}
 
+moveLeft() {
+    this.positionX = this.positionX + 2;
+    this.domElement.style.left = this.positionX + "vw";
+}
+
+moveUp() {
+    this.positionY = this.positionX + 2;
+    this.domElement.style.up = this.positionY + "vh";
+}
+moveDown() {
+    this.positionY = this.positionX - 2;
+    this.domElement.style.up = this.positionY + "vh";
+}
 
 class Enemy {
     constructor() {
