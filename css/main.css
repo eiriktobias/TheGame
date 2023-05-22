@@ -4,7 +4,11 @@ body {
 }
 
 #board {
-  background-color: #c3d5f5;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(209, 212, 241),
+    rgb(122, 154, 202)
+  );
   height: 100vh;
   position: relative;
   overflow: hidden;

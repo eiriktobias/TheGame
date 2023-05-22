@@ -31,12 +31,12 @@ class Player {
     this.domElement.style.left = this.positionX + "vw";
   }
   moveUp() {
-    this.positionY = this.positionX + 2;
-    this.domElement.style.up = this.positionY + "vh";
+    this.positionY = this.positionY + 2;
+    this.domElement.style.bottom = this.positionY + "vh";
   }
   moveDown() {
-    this.positionY = this.positionX - 2;
-    this.domElement.style.up = this.positionY + "vh";
+    this.positionY = this.positionY - 2;
+    this.domElement.style.bottom = this.positionY + "vh";
   }
 } // E N D  C L A S S  P L A Y E R
 
@@ -80,3 +80,15 @@ setInterval(() => {
     enemyInstance.moveDown();
   });
 }, 60);
+
+document.addEventListener("keydown", (event) => {
+  if (event.code === "ArrowLeft") {
+    player.moveLeft();
+  } else if (event.code === "ArrowRight") {
+    player.moveRight();
+  } else if (event.code === "ArrowUp") {
+    player.moveUp();
+  } else if (event.code === "ArrowDown") {
+    player.moveDown();
+  }
+});
