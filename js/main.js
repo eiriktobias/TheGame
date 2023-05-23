@@ -80,8 +80,10 @@ setInterval(() => {
 
 setInterval(() => {
   enemyArray.forEach((collision) => {
+    //move enemy
     collision.moveDown();
 
+    //detect colision enemy vs. player
     if (
       collision.positionX < player.positionX + player.width &&
       collision.positionX + collision.width > player.positionX &&
@@ -91,6 +93,24 @@ setInterval(() => {
       console.log("game over");
       location.href = "./gameover.html";
     }
+
+
+    //detect collision enemy vs. any bullet
+    bulletsArray.forEach((collision) => {
+      //move enemy
+      collision.moveDown();
+
+      //detect colision enemy vs. player
+      if (
+        collision.positionX < bullet.positionX + bullet.width &&
+        collision.positionX + collision.width > bullet.positionX &&
+        collision.positionY < bullet.positionY + bullet.height &&
+        collision.height + collision.positionY > bullet.positionY
+      ) {
+        console.log("game over");
+        location.href = "./gameover.html";
+      }
+    });
   });
 }, 7);
 
@@ -146,7 +166,7 @@ setInterval(() => {
   });
 }, 10);
 
-// ENEMY 2
+// ENEMY 3
 class Enemy3 {
   constructor() {
     this.width = 6.2;
@@ -200,10 +220,40 @@ setInterval(() => {
 
 class Bullet {
   constructor() {
-    this.width = 1;
+    this.width = 0.7;
     this.height = 1.5;
+    this.positionX = player.positionX + player.width / 4;
+    this.positionY = player.positionY + player.height / 3;
+    this.domElement = document.createElement("div");
+  }
+
+  createDomElement() {
+    this.domElement.className = "bullet";
+    this.domElement.style.width = this.width + "rem";
+    this.domElement.style.height = this.height + "rem";
+    this.domElement.style.left = this.positionX + "rem";
+    this.domElement.style.bottom = this.positionY + "rem";
+
+    const parentElm = document.getElementById("board");
+    parentElm.appendChild(this.domElement);
+  }
+
+  shoot() {
+    this.positionY = this.positionY + 0.1;
+    this.domElement.style.bottom = this.positionY + "rem";
   }
 }
+
+setInterval(() => {
+  bulletsArray.forEach((element, i) => {
+    element.shoot();
+    if (element.positionY > 200) {
+      bulletsArray.splice(i, 1);
+    }
+  });
+}, 3);
+
+const bulletsArray = [];
 
 document.addEventListener("keydown", (event) => {
   if (event.code === "ArrowLeft") {
@@ -214,8 +264,11 @@ document.addEventListener("keydown", (event) => {
     player.moveUp();
   } else if (event.code === "ArrowDown") {
     player.moveDown();
-  } else if (event.code === " ") {
-    player.shoot();
+  } else if (event.key === " ") {
+    const newBullet = new Bullet();
+    bulletsArray.push(newBullet);
+    newBullet.createDomElement();
+    console.log(bulletsArray);
   }
 });
 
