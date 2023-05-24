@@ -6,11 +6,9 @@ body {
 }
 
 #board {
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(221, 223, 239),
-    rgb(122, 154, 202)
-  );
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   height: 45rem;
   width: 45rem;
   position: relative;
@@ -49,11 +47,9 @@ body {
 }
 
 #board2 {
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(221, 223, 239),
-    rgb(122, 154, 202)
-  );
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   height: 45rem;
   width: 45rem;
   position: relative;
@@ -94,4 +90,38 @@ a:hover,
 a:active {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
+}
+
+body {
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#center {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+}
+#score {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+color: azure;
+text-shadow: 1px 1px 2px black;
+}
+
+#title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: azure;
+  text-shadow: 1px 1px 2px black;
 }

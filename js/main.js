@@ -42,6 +42,7 @@ class Player {
 } // E N D  C L A S S  P L A Y E R
 
 const player = new Player();
+let score = 0;
 
 class Enemy {
   constructor() {
@@ -72,7 +73,6 @@ class Enemy {
 } // E N D  C L A S S  E N E M Y
 
 const enemyArray = [];
-let score = 0;
 
 setInterval(() => {
   const newEnemy = new Enemy();
@@ -104,9 +104,9 @@ setInterval(() => {
         bullet.positionY < collision.positionY + collision.height &&
         bullet.height + bullet.positionY > collision.positionY
       ) {
-        console.log("bullet collision");
+        score += 2;
+        document.getElementById("score").innerHTML = score;
         collision.domElement.remove();
-        score++;
       }
     });
   });
@@ -169,9 +169,9 @@ setInterval(() => {
         bullet.positionY < collision.positionY + collision.height &&
         bullet.height + bullet.positionY > collision.positionY
       ) {
-        console.log("bullet collision");
+        score += 1;
+        document.getElementById("score").innerHTML = score;
         collision.domElement.remove();
-        score++;
       }
     });
   });
@@ -234,9 +234,10 @@ setInterval(() => {
         bullet.positionY < collision.positionY + collision.height &&
         bullet.height + bullet.positionY > collision.positionY
       ) {
-        console.log("bullet collision");
+        score += 1;
+        document.getElementById("score").innerHTML = score;
         collision.domElement.remove();
-        score++;
+        console.log(score);
       }
     });
   });
