@@ -80,9 +80,10 @@ setInterval(() => {
 }, 3500);
 
 setInterval(() => {
-  enemyArray.forEach((collision) => {
+  enemyArray.forEach((collision, i) => {
     //move enemy
     collision.moveDown();
+    console.log(enemyArray);
 
     //detect colision enemy vs. player
     if (
@@ -91,7 +92,6 @@ setInterval(() => {
       collision.positionY < player.positionY + player.height &&
       collision.height + collision.positionY > player.positionY
     ) {
-      console.log("game over");
       location.href = "./gameover.html";
     }
 
@@ -104,13 +104,14 @@ setInterval(() => {
         bullet.positionY < collision.positionY + collision.height &&
         bullet.height + bullet.positionY > collision.positionY
       ) {
-        score += 2;
+        score += 200;
         document.getElementById("score").innerHTML = score;
+        enemyArray.splice(i, 1);
         collision.domElement.remove();
       }
     });
   });
-}, 7);
+}, 10);
 
 // ENEMY 2
 class Enemy2 {
@@ -149,7 +150,7 @@ setInterval(() => {
 }, 7500);
 
 setInterval(() => {
-  enemy2Array.forEach((collision) => {
+  enemy2Array.forEach((collision, i) => {
     collision.moveDown();
 
     if (
@@ -169,8 +170,9 @@ setInterval(() => {
         bullet.positionY < collision.positionY + collision.height &&
         bullet.height + bullet.positionY > collision.positionY
       ) {
-        score += 1;
+        score += 100;
         document.getElementById("score").innerHTML = score;
+        enemy2Array.splice(i, 1);
         collision.domElement.remove();
       }
     });
@@ -214,7 +216,7 @@ setInterval(() => {
 }, 6000);
 
 setInterval(() => {
-  enemy3Array.forEach((collision) => {
+  enemy3Array.forEach((collision, i) => {
     collision.moveDown();
 
     if (
@@ -234,14 +236,14 @@ setInterval(() => {
         bullet.positionY < collision.positionY + collision.height &&
         bullet.height + bullet.positionY > collision.positionY
       ) {
-        score += 1;
+        score += 150;
         document.getElementById("score").innerHTML = score;
+        enemy3Array.splice(i, 1);
         collision.domElement.remove();
-        console.log(score);
       }
     });
   });
-}, 5);
+}, 7);
 
 class Bullet {
   constructor() {
