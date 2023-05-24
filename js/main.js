@@ -49,7 +49,7 @@ class Enemy {
     this.height = 6;
     this.positionX = Math.floor(
       Math.random() * (45 - this.width + 1)
-    ); /* 0 .... 100-w */
+    ); /* 0 .... 45-w */
     this.positionY = 100;
     this.domElement = null;
     this.createDomElement();
@@ -72,6 +72,7 @@ class Enemy {
 } // E N D  C L A S S  E N E M Y
 
 const enemyArray = [];
+let score = 0;
 
 setInterval(() => {
   const newEnemy = new Enemy();
@@ -94,21 +95,18 @@ setInterval(() => {
       location.href = "./gameover.html";
     }
 
-
     //detect collision enemy vs. any bullet
-    bulletsArray.forEach((collision) => {
-      //move enemy
-      collision.moveDown();
-
+    bulletsArray.forEach((bullet) => {
       //detect colision enemy vs. player
       if (
-        collision.positionX < bullet.positionX + bullet.width &&
-        collision.positionX + collision.width > bullet.positionX &&
-        collision.positionY < bullet.positionY + bullet.height &&
-        collision.height + collision.positionY > bullet.positionY
+        bullet.positionX < collision.positionX + collision.width &&
+        bullet.positionX + bullet.width > collision.positionX &&
+        bullet.positionY < collision.positionY + collision.height &&
+        bullet.height + bullet.positionY > collision.positionY
       ) {
-        console.log("game over");
-        location.href = "./gameover.html";
+        console.log("bullet collision");
+        collision.domElement.remove();
+        score++;
       }
     });
   });
@@ -163,6 +161,19 @@ setInterval(() => {
       console.log("game over");
       location.href = "./gameover.html";
     }
+    bulletsArray.forEach((bullet) => {
+      //detect colision enemy vs. player
+      if (
+        bullet.positionX < collision.positionX + collision.width &&
+        bullet.positionX + bullet.width > collision.positionX &&
+        bullet.positionY < collision.positionY + collision.height &&
+        bullet.height + bullet.positionY > collision.positionY
+      ) {
+        console.log("bullet collision");
+        collision.domElement.remove();
+        score++;
+      }
+    });
   });
 }, 10);
 
@@ -215,6 +226,19 @@ setInterval(() => {
       console.log("game over");
       location.href = "./gameover.html";
     }
+    bulletsArray.forEach((bullet) => {
+      //detect colision enemy vs. player
+      if (
+        bullet.positionX < collision.positionX + collision.width &&
+        bullet.positionX + bullet.width > collision.positionX &&
+        bullet.positionY < collision.positionY + collision.height &&
+        bullet.height + bullet.positionY > collision.positionY
+      ) {
+        console.log("bullet collision");
+        collision.domElement.remove();
+        score++;
+      }
+    });
   });
 }, 5);
 
