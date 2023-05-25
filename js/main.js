@@ -107,7 +107,9 @@ setInterval(() => {
         score += 200;
         document.getElementById("score").innerHTML = score;
         enemyArray.splice(i, 1);
+        bulletsArray.splice(i, 1);
         collision.domElement.remove();
+        bullet.domElement.remove();
       }
     });
   });
@@ -173,7 +175,9 @@ setInterval(() => {
         score += 100;
         document.getElementById("score").innerHTML = score;
         enemy2Array.splice(i, 1);
+        bulletsArray.splice(i, 1);
         collision.domElement.remove();
+        bullet.domElement.remove();
       }
     });
   });
@@ -238,8 +242,10 @@ setInterval(() => {
       ) {
         score += 150;
         document.getElementById("score").innerHTML = score;
+        bulletsArray.splice(i, 1);
         enemy3Array.splice(i, 1);
         collision.domElement.remove();
+        bullet.domElement.remove();
       }
     });
   });
