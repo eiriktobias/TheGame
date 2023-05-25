@@ -168,7 +168,6 @@ setInterval(() => {
       collision.positionY < player.positionY + player.height &&
       collision.height + collision.positionY > player.positionY
     ) {
-      console.log("game over");
       location.href = "./gameover.html";
     }
 
@@ -245,7 +244,6 @@ setInterval(() => {
       collision.positionY < player.positionY + player.height &&
       collision.height + collision.positionY > player.positionY
     ) {
-      console.log("game over");
       location.href = "./gameover.html";
     }
 
