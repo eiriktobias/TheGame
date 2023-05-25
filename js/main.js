@@ -1,3 +1,15 @@
+function gameOver() {
+  document.querySelector("#board").style.display = "none";
+  document.querySelector("#board2").style.visibility = "visible";
+  clearInterval(newEnemyInterval1);
+  clearInterval(newEnemyInterval2);
+  clearInterval(newEnemyInterval3);
+  clearInterval(collision1);
+  clearInterval(collision2);
+  clearInterval(collision3);
+  clearInterval(bullet);
+}
+
 class Player {
   constructor() {
     this.width = 5.5;
@@ -74,16 +86,15 @@ class Enemy {
 
 const enemyArray = [];
 
-setInterval(() => {
+const newEnemyInterval1 = setInterval(() => {
   const newEnemy = new Enemy();
   enemyArray.push(newEnemy);
 }, 3500);
 
-setInterval(() => {
+const collision1 = setInterval(() => {
   enemyArray.forEach((collision, i) => {
     //move enemy
     collision.moveDown();
-    console.log(enemyArray);
 
     //detect colision enemy vs. player
     if (
@@ -92,13 +103,15 @@ setInterval(() => {
       collision.positionY < player.positionY + player.height &&
       collision.height + collision.positionY > player.positionY
     ) {
-      location.href = "./gameover.html";
+      gameOver();
     }
 
     //remove enemies and points
     if (collision.positionY < 0 - 7) {
       score -= 200;
-      document.getElementById("score").innerHTML = score;
+      document.querySelectorAll(".score").forEach((element) => {
+        element.innerHTML = score;
+      });
       enemyArray.splice(i, 1);
       collision.domElement.remove();
     }
@@ -112,7 +125,9 @@ setInterval(() => {
         bullet.height + bullet.positionY > collision.positionY
       ) {
         score += 200;
-        document.getElementById("score").innerHTML = score;
+        document.querySelectorAll(".score").forEach((element) => {
+          element.innerHTML = score;
+        });
         enemyArray.splice(i, 1);
         bulletsArray.splice(i, 1);
         collision.domElement.remove();
@@ -153,12 +168,12 @@ const enemy2Array = [];
 
 ///////////////////////////////////////////////////////////////
 
-setInterval(() => {
+const newEnemyInterval2 = setInterval(() => {
   const newEnemy2 = new Enemy2();
   enemy2Array.push(newEnemy2);
 }, 7500);
 
-setInterval(() => {
+const collision2 = setInterval(() => {
   enemy2Array.forEach((collision, i) => {
     collision.moveDown();
 
@@ -168,13 +183,15 @@ setInterval(() => {
       collision.positionY < player.positionY + player.height &&
       collision.height + collision.positionY > player.positionY
     ) {
-      location.href = "./gameover.html";
+      gameOver();
     }
 
     //remove enemies and points
     if (collision.positionY < 0 - 7) {
       score -= 500;
-      document.getElementById("score").innerHTML = score;
+      document.querySelectorAll(".score").forEach((element) => {
+        element.innerHTML = score;
+      });
       enemy2Array.splice(i, 1);
       collision.domElement.remove();
     }
@@ -188,7 +205,9 @@ setInterval(() => {
         bullet.height + bullet.positionY > collision.positionY
       ) {
         score += 100;
-        document.getElementById("score").innerHTML = score;
+        document.querySelectorAll(".score").forEach((element) => {
+          element.innerHTML = score;
+        });
         enemy2Array.splice(i, 1);
         bulletsArray.splice(i, 1);
         collision.domElement.remove();
@@ -229,12 +248,12 @@ const enemy3Array = [];
 
 ///////////////////////////////////////////////////////////////
 
-setInterval(() => {
+const newEnemyInterval3 = setInterval(() => {
   const newEnemy3 = new Enemy3();
   enemy3Array.push(newEnemy3);
 }, 6000);
 
-setInterval(() => {
+const collision3 = setInterval(() => {
   enemy3Array.forEach((collision, i) => {
     collision.moveDown();
 
@@ -244,13 +263,15 @@ setInterval(() => {
       collision.positionY < player.positionY + player.height &&
       collision.height + collision.positionY > player.positionY
     ) {
-      location.href = "./gameover.html";
+      gameOver();
     }
 
     //remove enemies and points
     if (collision.positionY < 0 - 7) {
       score -= 400;
-      document.getElementById("score").innerHTML = score;
+      document.querySelectorAll(".score").forEach((element) => {
+        element.innerHTML = score;
+      });
       enemy3Array.splice(i, 1);
       collision.domElement.remove();
     }
@@ -264,7 +285,9 @@ setInterval(() => {
         bullet.height + bullet.positionY > collision.positionY
       ) {
         score += 150;
-        document.getElementById("score").innerHTML = score;
+        document.querySelectorAll(".score").forEach((element) => {
+          element.innerHTML = score;
+        });
         bulletsArray.splice(i, 1);
         enemy3Array.splice(i, 1);
         collision.domElement.remove();
@@ -300,7 +323,7 @@ class Bullet {
   }
 }
 
-setInterval(() => {
+const bullet = setInterval(() => {
   bulletsArray.forEach((element, i) => {
     element.shoot();
     if (element.positionY > 200) {
@@ -324,7 +347,6 @@ document.addEventListener("keydown", (event) => {
     const newBullet = new Bullet();
     bulletsArray.push(newBullet);
     newBullet.createDomElement();
-    console.log(bulletsArray);
   }
 });
 

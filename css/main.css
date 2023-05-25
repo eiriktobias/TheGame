@@ -61,6 +61,7 @@ body {
   margin-right: auto;
   border-radius: 5px;
   display: flex;
+  visibility: hidden;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -114,11 +115,19 @@ body {
   top: 3%;
   left: 3%;
 }
-#score {
+.score {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
   color: azure;
   text-shadow: 1px 1px 2px black;
+}
+
+.score.gameover {
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 #title {
