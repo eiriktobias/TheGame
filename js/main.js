@@ -95,6 +95,13 @@ setInterval(() => {
       location.href = "./gameover.html";
     }
 
+    //remove enemies and points
+    if (collision.positionY < 0 - 7) {
+      score -= 200;
+      document.getElementById("score").innerHTML = score;
+      enemyArray.splice(i, 1);
+      collision.domElement.remove();
+    }
     //detect collision enemy vs. any bullet
     bulletsArray.forEach((bullet) => {
       //detect colision enemy vs. player
@@ -164,6 +171,15 @@ setInterval(() => {
       console.log("game over");
       location.href = "./gameover.html";
     }
+
+    //remove enemies and points
+    if (collision.positionY < 0 - 7) {
+      score -= 500;
+      document.getElementById("score").innerHTML = score;
+      enemy2Array.splice(i, 1);
+      collision.domElement.remove();
+    }
+
     bulletsArray.forEach((bullet) => {
       //detect colision enemy vs. player
       if (
@@ -232,6 +248,15 @@ setInterval(() => {
       console.log("game over");
       location.href = "./gameover.html";
     }
+
+    //remove enemies and points
+    if (collision.positionY < 0 - 7) {
+      score -= 400;
+      document.getElementById("score").innerHTML = score;
+      enemy3Array.splice(i, 1);
+      collision.domElement.remove();
+    }
+
     bulletsArray.forEach((bullet) => {
       //detect colision enemy vs. player
       if (
